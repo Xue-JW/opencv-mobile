@@ -4,7 +4,7 @@
 ![release](https://github.com/nihui/opencv-mobile/workflows/release/badge.svg)
 ![download](https://img.shields.io/github/downloads/nihui/opencv-mobile/total.svg)
 
-test Actoins
+test Actoins.
 
 ✔️ This project provides the minimal build of opencv library for the **Android**, **iOS** and **ARM Linux** platforms.
 
