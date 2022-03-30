@@ -1,4 +1,4 @@
-name: release
+name: arm64
 #on: [push, pull_request]
 on:
   push:
@@ -33,6 +33,7 @@ jobs:
         wget -q https://github.com/opencv/opencv_contrib/archive/refs/tags/${{ env.OPENCV_VERSION }}.zip -O opencv-contrib-${{ env.OPENCV_VERSION }}.zip
         unzip -q opencv-${{ env.OPENCV_VERSION }}.zip
         unzip -q opencv-contrib-${{ env.OPENCV_VERSION }}.zip
+        ls -al
         cd opencv-${{ env.OPENCV_VERSION }}
         truncate -s 0 cmake/OpenCVFindLibsGrfmt.cmake
         rm -rf modules/gapi
@@ -40,7 +41,6 @@ jobs:
         patch -p1 -i ../opencv-4.5.4-no-zlib.patch
         rm -rf modules/highgui
         cp -r ../highgui modules/
-        ls -al
     - name: build-armeabi-v7a
       run: |
         cd opencv-${{ env.OPENCV_VERSION }}
