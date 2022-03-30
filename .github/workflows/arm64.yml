@@ -48,7 +48,7 @@ jobs:
         cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake \
             -DANDROID_ABI="armeabi-v7a" -DANDROID_ARM_NEON=ON -DANDROID_PLATFORM=android-24 -DANDROID_CPP_FEATURES="no-rtti no-exceptions" \
             -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release `cat ../../opencv4_cmake_options.txt` -DBUILD_opencv_world=OFF -DOPENCV_DISABLE_FILESYSTEM_SUPPORT=ON \
-            -DOPENCV_EXTRA_MODULES_PATH=`../opencv_contrib-${{ env.OPENCV_VERSION }}/modules` ..
+            -DOPENCV_EXTRA_MODULES_PATH=`../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules` ..
         cmake --build . -j 2
         cmake --build . --target install
     - name: build-arm64-v8a
@@ -58,7 +58,7 @@ jobs:
         cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake \
             -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-24 -DANDROID_CPP_FEATURES="no-rtti no-exceptions" \
             -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release `cat ../../opencv4_cmake_options.txt` -DBUILD_opencv_world=OFF -DOPENCV_DISABLE_FILESYSTEM_SUPPORT=ON \
-            -DOPENCV_EXTRA_MODULES_PATH=`../opencv_contrib-${{ env.OPENCV_VERSION }}/modules` ..
+            -DOPENCV_EXTRA_MODULES_PATH=`../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules` ..
         cmake --build . -j 2
         cmake --build . --target install
     - name: package
