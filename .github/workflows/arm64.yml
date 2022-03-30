@@ -48,7 +48,15 @@ jobs:
         cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake \
             -DANDROID_ABI="armeabi-v7a" -DANDROID_ARM_NEON=ON -DANDROID_PLATFORM=android-24 -DANDROID_CPP_FEATURES="no-rtti no-exceptions" \
             -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release `cat ../../opencv4_cmake_options.txt` -DBUILD_opencv_world=OFF -DOPENCV_DISABLE_FILESYSTEM_SUPPORT=ON \
-            -DOPENCV_EXTRA_MODULES_PATH="../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules" ..
+            -DOPENCV_EXTRA_MODULES_PATH="../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules" \
+            -D BUILD_opencv_alphamat=OFF -D BUILD_opencv_aruco=OFF -D BUILD_opencv_bgsegm=OFF -D BUILD_opencv_bioinspired=OFF -D BUILD_opencv_ccalib=OFF \
+            -D BUILD_opencv_cnn_3dobj=OFF -D BUILD_opencv_cvv=OFF -D BUILD_opencv_datasets=OFF -D BUILD_opencv_dnn_objdetect=OFF -D BUILD_opencv_dnn_superres=OFF \
+            -D BUILD_opencv_dnns_easily_fooled=OFF -D BUILD_opencv_dpm=OFF -D BUILD_opencv_face=OFF -D BUILD_opencv_freetype=OFF -D BUILD_opencv_fuzzy=OFF \
+            -D BUILD_opencv_hdf=OFF -D BUILD_opencv_julia=OFF -D BUILD_opencv_line_descriptor=OFF -D BUILD_opencv_matlab=OFF -D BUILD_opencv_mcc=OFF \
+            -D BUILD_opencv_optflow=OFF -D BUILD_opencv_ovis=OFF -D BUILD_opencv_plot=OFF -D BUILD_opencv_reg=OFF -D BUILD_opencv_rgbd=OFF \
+            -D BUILD_opencv_saliency=OFF -D BUILD_opencv_sfm=OFF -D BUILD_opencv_stereo=OFF -D BUILD_opencv_structured_light=OFF -D BUILD_opencv_surface_matching=OFF \
+            -D BUILD_opencv_text=OFF -D BUILD_opencv_xfeatures2d=OFF -D BUILD_opencv_ximgproc=OFF -D BUILD_opencv_xobjdetect=OFF -D BUILD_opencv_xphoto=OFF \
+            ..
         cmake --build . -j 2
         cmake --build . --target install
     - name: build-arm64-v8a
@@ -58,7 +66,15 @@ jobs:
         cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake \
             -DANDROID_ABI="arm64-v8a" -DANDROID_PLATFORM=android-24 -DANDROID_CPP_FEATURES="no-rtti no-exceptions" \
             -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release `cat ../../opencv4_cmake_options.txt` -DBUILD_opencv_world=OFF -DOPENCV_DISABLE_FILESYSTEM_SUPPORT=ON \
-            -DOPENCV_EXTRA_MODULES_PATH="../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules" ..
+            -DOPENCV_EXTRA_MODULES_PATH="../../opencv_contrib-${{ env.OPENCV_VERSION }}/modules" \
+            -D BUILD_opencv_alphamat=OFF -D BUILD_opencv_aruco=OFF -D BUILD_opencv_bgsegm=OFF -D BUILD_opencv_bioinspired=OFF -D BUILD_opencv_ccalib=OFF \
+            -D BUILD_opencv_cnn_3dobj=OFF -D BUILD_opencv_cvv=OFF -D BUILD_opencv_datasets=OFF -D BUILD_opencv_dnn_objdetect=OFF -D BUILD_opencv_dnn_superres=OFF \
+            -D BUILD_opencv_dnns_easily_fooled=OFF -D BUILD_opencv_dpm=OFF -D BUILD_opencv_face=OFF -D BUILD_opencv_freetype=OFF -D BUILD_opencv_fuzzy=OFF \
+            -D BUILD_opencv_hdf=OFF -D BUILD_opencv_julia=OFF -D BUILD_opencv_line_descriptor=OFF -D BUILD_opencv_matlab=OFF -D BUILD_opencv_mcc=OFF \
+            -D BUILD_opencv_optflow=OFF -D BUILD_opencv_ovis=OFF -D BUILD_opencv_plot=OFF -D BUILD_opencv_reg=OFF -D BUILD_opencv_rgbd=OFF \
+            -D BUILD_opencv_saliency=OFF -D BUILD_opencv_sfm=OFF -D BUILD_opencv_stereo=OFF -D BUILD_opencv_structured_light=OFF -D BUILD_opencv_surface_matching=OFF \
+            -D BUILD_opencv_text=OFF -D BUILD_opencv_xfeatures2d=OFF -D BUILD_opencv_ximgproc=OFF -D BUILD_opencv_xobjdetect=OFF -D BUILD_opencv_xphoto=OFF \
+            ..
         cmake --build . -j 2
         cmake --build . --target install
     - name: package
